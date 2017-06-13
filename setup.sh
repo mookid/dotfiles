@@ -40,7 +40,7 @@ editor = emacs -Q --eval '(progn (push (cons (quote font) \"Consolas 16\") defau
 [merge]
     tool = ediff
 [mergetool "ediff"]
-    cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"\$LOCAL\\\" \\\"\$REMOTE\\\" \\\"\$BASE\\\" nil \\\"\$MERGED\\\")\"
+    cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\\\"\$LOCAL\\\\\" \\\\\"\$REMOTE\\\\\" \\\\\"\$BASE\\\\\" nil \\\\\"\$MERGED\\\\\")\"
 [color "diff"]
     frag = magenta bold
     meta = yellow bold
