@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cat > ~/.bashaliases <<EOF
+PS1="\w$ "
 alias s='git status'
 alias d='git diff'
 alias dc='git diff --cached'
