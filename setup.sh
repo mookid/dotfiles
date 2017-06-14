@@ -2,6 +2,7 @@
 
 cat > ~/.bashaliases <<EOF
 PS1="\w$ "
+PROMPT_COMMAND='echo -ne "\033]0;\${PWD}\007"'
 alias s='git status'
 alias d='git diff'
 alias dc='git diff --cached'
