@@ -7,6 +7,7 @@ alias s='git status'
 alias d='git diff'
 alias dc='git diff --cached'
 alias vv='git branch -vv'
+mkcdir() { if [ \$# -ne 1 ]; then echo "usage: \${FUNCNAME[0]} <filename>"; else mkdir -p -- "\$1" && cd -P -- "\$1"; fi }
 EOF
 
 cat > ~/.gitconfig <<EOF
