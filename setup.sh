@@ -12,7 +12,7 @@ EOF
 
 cat > ~/.gitconfig <<EOF
 [core]
-editor = emacs -Q --eval '(progn (push (cons (quote font) \"Consolas 16\") default-frame-alist) (global-set-key (kbd \"<escape>\") (quote kill-emacs)))'
+    editor = emacs -Q --eval '(global-set-key (kbd \"<escape>\") (quote kill-emacs))'
 [gc]
     auto = 256
 [user]
