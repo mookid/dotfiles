@@ -19,9 +19,9 @@ cat > ~/.gitconfig <<EOF
     name = nathan moreau
     email = nathan.moreau@m4x.org
 [alias]
-    cam = commit -am
+    cam = commit -avm
     ch = cherry-pick
-    cm = "!f() { git diff --cached && git commit; }; f"
+    cm = "!f() { git diff --cached && git commit -v; }; f"
     co = checkout
     d = diff
     db = !git diff \$(git merge-base origin/master HEAD) HEAD
