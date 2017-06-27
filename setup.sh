@@ -7,7 +7,13 @@ alias s='git status'
 alias d='git diff'
 alias dc='git diff --cached'
 alias vv='git branch -vv'
+alias sbcl='rlwrap sbcl'
+alias ocaml='rlwrap ocaml'
 mkcdir() { if [ \$# -ne 1 ]; then echo "usage: \${FUNCNAME[0]} <filename>"; else mkdir -p -- "\$1" && cd -P -- "\$1"; fi }
+EOF
+
+cat > ~/.sbclrc <<EOF
+(setf *read-default-float-format* 'double-float)
 EOF
 
 cat > ~/.gitconfig <<EOF
