@@ -40,7 +40,7 @@ cat > ~/.gitconfig <<EOF
     r1 = reset HEAD^
     rw = "!f() { git checkout -b review_\$1 origin/\$1; }; f"
     rh= reset --hard
-    sn = show --name-only
+    sn = "!f() { git show -1 --skip=\$1; }; f"
     s = status
     wc = whatchanged --oneline -5
     wcc = whatchanged --oneline
