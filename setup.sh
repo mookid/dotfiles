@@ -61,4 +61,6 @@ cat > ~/.gitconfig <<EOF
     upstream = bold cyan
 [diff]
     algorithm = patience
+[pull]
+    rebase = true
 EOF
