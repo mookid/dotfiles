@@ -45,7 +45,7 @@ cat > ~/.gitconfig <<EOF
     wc = whatchanged --oneline -5
     wcc = whatchanged --oneline
     wip = commit -am wip
-    wl = worktree list
+    wl = worktree list --porcelain
     worktree-reset = "!f() { \\
         PWD_ORIG=\$(pwd); \\
         for wt in \$(git worktree list | awk '{print \$1}'); \\
