@@ -40,9 +40,9 @@ cat > ~/.gitconfig <<'EOF'
     laa = log --all --decorate --oneline --graph --color
     ll = log --decorate --oneline --color
     r1 = reset HEAD^
-    rw = "!f() { git checkout -b review_$1 origin/$1; }; f"
     remove-gone = "!f() { git branch -vv | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
+    rw = "!f() { git checkout -b $1 origin/$1; }; f"
     sn = "!f() { git show -1 --skip=$1; }; f"
     s = status
     wc = whatchanged --oneline -5
