@@ -63,13 +63,6 @@ cat > ~/.gitconfig <<'EOF'
     tool = ediff
 [mergetool "ediff"]
     cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
-[color "diff"]
-    frag = magenta bold
-    meta = yellow bold
-    new = green bold
-    old = red bold
-[color "status"]
-    added = yellow
 [color "branch"]
     upstream = bold cyan
 [diff]
