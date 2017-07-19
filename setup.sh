@@ -36,10 +36,10 @@ cat > ~/.gitconfig <<'EOF'
     dc = diff --cached
     du = diff @{u} HEAD
     f = fetch --all --prune
-    l = log --decorate --oneline --color -5
+    l = log --decorate --oneline --graph --color -5
     la = log --all --decorate --oneline --graph --color -5
     laa = log --all --decorate --oneline --graph --color
-    ll = log --decorate --oneline --color
+    ll = log --decorate --oneline --graph --color
     r1 = reset HEAD^
     remove-gone = "!f() { git branch -vv | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
