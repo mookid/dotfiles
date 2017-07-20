@@ -14,6 +14,7 @@ alias ocaml='rlwrap ocaml'
 mkcdir() { if [ $# -ne 1 ]; then echo "usage: ${FUNCNAME[0]} <filename>"; else mkdir -p -- "$1" && cd -P -- "$1"; fi }
 rg() { $(which rg) --path-separator / -p "$@" | less -R; }
 EOF
+echo "[ -e $PWD/setup.sh ] && $PWD/setup.sh" >> ~/.bashaliases
 
 cat > ~/.sbclrc <<'EOF'
 (setf *read-default-float-format* 'double-float)
