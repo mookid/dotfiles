@@ -46,6 +46,7 @@ cat > ~/.gitconfig <<'EOF'
     r1 = reset HEAD^
     remove-gone = "!f() { git branch -vv | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
+    root = "!f() { cd $(git rev-parse --show-toplevel); }; f"
     rw = "!f() { git checkout -b $1 origin/$1; }; f"
     sn = "!f() { git show -1 --skip=$1; }; f"
     s = status
