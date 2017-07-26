@@ -13,6 +13,7 @@ alias sbcl='rlwrap sbcl'
 alias ocaml='rlwrap ocaml'
 mkcdir() { if [ $# -ne 1 ]; then echo "usage: ${FUNCNAME[0]} <filename>"; else mkdir -p -- "$1" && cd -P -- "$1"; fi }
 rg() { $(which rg) --path-separator / -p "$@" | less -R; }
+rgc() { $(which rg) --path-separator / -p "$@"; }
 EOF
 echo "[ -e $PWD/setup.sh ] && $PWD/setup.sh" >> ~/.bashaliases
 
