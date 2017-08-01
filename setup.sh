@@ -45,7 +45,7 @@ cat > ~/.gitconfig <<'EOF'
     laa = log --all --decorate --oneline --graph --color
     ll = log --decorate --oneline --graph --color
     r1 = reset HEAD^
-    remove-gone = "!f() { git branch -vv | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
+    remove-gone = "!f() { git branch -vv | cut -c 3- | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
     root = "!f() { cd $(git rev-parse --show-toplevel); }; f"
     rw = "!f() { git checkout -b $1 origin/$1; }; f"
