@@ -75,4 +75,6 @@ cat > ~/.gitconfig <<'EOF'
     algorithm = patience
 [pull]
     rebase = true
+[push]
+    default = nothing
 EOF
