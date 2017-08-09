@@ -15,8 +15,11 @@ mkcdir() { if [ $# -ne 1 ]; then echo "usage: ${FUNCNAME[0]} <filename>"; else m
 rg() { $(which rg) --path-separator / -p "$@" | less -R; }
 rgc() { $(which rg) --path-separator / -p "$@"; }
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
+alias dirs='dirs -v'
+alias cde='pushd ~/.emacs.d'
 EOF
 echo "[ -e $PWD/setup.sh ] && $PWD/setup.sh" >> ~/.bashaliases
+echo "alias cdd='pushd $PWD'" >> ~/.bashaliases
 
 cat > ~/.sbclrc <<'EOF'
 (setf *read-default-float-format* 'double-float)
