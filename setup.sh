@@ -54,6 +54,7 @@ cat > ~/.gitconfig <<'EOF'
     rw = "!f() { git checkout -b $1 origin/$1; }; f"
     sn = "!f() { git show -1 --skip=$1; }; f"
     s = status
+    sup = log --decorate --oneline --graph --color HEAD..@{u}
     wc = whatchanged --oneline -5
     wcc = whatchanged --oneline
     wip = commit -am wip
