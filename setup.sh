@@ -28,6 +28,7 @@ EOF
 cat > ~/.gitconfig <<'EOF'
 [core]
     editor = emacs -Q --eval '(global-set-key (kbd \"<escape>\") (quote kill-emacs))'
+    logallrefupdates = true
 [gc]
     auto = 256
 [user]
