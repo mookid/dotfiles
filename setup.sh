@@ -39,6 +39,13 @@ mkcdir () {
 }
 EOF
 
+cat >~/.inputrc <<'EOF'
+set convert-meta on
+
+"\M-p": previous-history
+"\M-n": next-history
+EOF
+
 cat > ~/.sbclrc <<'EOF'
 (setf *read-default-float-format* 'double-float)
 EOF
