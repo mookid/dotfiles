@@ -1,8 +1,15 @@
 #!/bin/sh
 
-cat > ~/.bashaliases <<'EOF'
+# Setup:
+# Put the following two lines in .bashrc:
+#
+# ./path/to/setup.sh | tee somefile
+# . somefile
+#
+
+cat<<EOF
 PS1="\w$ "
-PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+PROMPT_COMMAND='echo -ne "\033]0;\${PWD}\007"'
 alias s='git status'
 alias d='git diff'
 alias dc='git diff --cached'
@@ -11,15 +18,26 @@ alias l='ls -lAH'
 alias vv='git branch -vv'
 alias sbcl='rlwrap sbcl'
 alias ocaml='rlwrap ocaml'
-mkcdir() { if [ $# -ne 1 ]; then echo "usage: ${FUNCNAME[0]} <filename>"; else mkdir -p -- "$1" && cd -P -- "$1"; fi }
-rg() { $(which rg) --path-separator / -p "$@" | less -R; }
-rgc() { $(which rg) --path-separator / -p "$@"; }
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias dirs='dirs -v'
 alias cde='pushd ~/.emacs.d'
+alias cdd='pushd $(dirname "$0")'
+
+rg () {
+    $(which rg) --path-separator / -p "$@" | less -R
+}
+rgc () {
+    $(which rg) --path-separator / -p "$@"
+}
+mkcdir () {
+    if test $# -ne 1
+    then
+        echo "usage: ${FUNCNAME[0]} <filename>"
+    else
+        mkdir -p -- "$1" && cd -P -- "$1"
+    fi
+}
 EOF
-echo "[ -e $PWD/setup.sh ] && $PWD/setup.sh" >> ~/.bashaliases
-echo "alias cdd='pushd $PWD'" >> ~/.bashaliases
 
 cat > ~/.sbclrc <<'EOF'
 (setf *read-default-float-format* 'double-float)
