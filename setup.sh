@@ -46,11 +46,11 @@ set convert-meta on
 "\M-n": next-history
 EOF
 
-cat > ~/.sbclrc <<'EOF'
+cat >~/.sbclrc <<'EOF'
 (setf *read-default-float-format* 'double-float)
 EOF
 
-cat > ~/.gitconfig <<'EOF'
+cat >~/.gitconfig <<'EOF'
 [core]
     editor = emacs -Q --eval '(global-set-key (kbd \"<escape>\") (quote kill-emacs))'
     logallrefupdates = true
