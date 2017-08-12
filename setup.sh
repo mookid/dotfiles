@@ -64,9 +64,12 @@ cat > ~/.gitconfig <<'EOF'
         PWD_ORIG=$(pwd); \
         for wt in $(git worktree list | awk '{print $1}'); \
         do \
-            cd $wt && \
-            git checkout $(basename $wt) > /dev/null 2>&1 && \
-            git reset --hard  > /dev/null 2>&1; \
+            if test -e $wt; \
+            then \
+                cd $wt && \
+                git checkout $(basename $wt) > /dev/null 2>&1 && \
+                git reset --hard  > /dev/null 2>&1; \
+            fi; \
         done; \
         cd $PWD_ORIG; \
     }; f"
