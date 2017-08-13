@@ -1,11 +1,14 @@
 #!/bin/sh
 
 # Setup:
-# Put the following two lines in .bashrc:
+# Put the following lines in .bashrc:
 #
+# PATH=/path/to/this/file:$PATH
 # ./path/to/setup.sh | tee somefile
 # . somefile
 #
+
+DOTFILEDIR=$(dirname "$0")
 
 cat<<EOF
 PS1="\w$ "
@@ -21,25 +24,44 @@ alias ocaml='rlwrap ocaml'
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias dirs='dirs -v'
 alias cde='pushd ~/.emacs.d'
-alias cdd='pushd $(dirname "$0")'
+alias cdd='pushd $DOTFILEDIR'
+EOF
 
-rg () {
-    $(which rg) --path-separator / -p "$@" | less -R
-}
-rgc () {
-    $(which rg) --path-separator / -p "$@"
-}
-mkcdir () {
-    if test $# -ne 1
-    then
-        echo "usage: ${FUNCNAME[0]} <filename>"
-    else
-        mkdir -p -- "$1" && cd -P -- "$1"
-    fi
-}
+if test -n "$CARGO_HOME"
+then
+        RG="$CARGO_HOME/rg --path-separator / -p"
+        cat >"$DOTFILEDIR/rg" <<EOF
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
+$RG "\$@" | less -R
+EOF
+
+        cat >"$DOTFILEDIR/rgc" <<EOF
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
+$RG "\$@"
+EOF
+fi
+
+cat >"$DOTFILEDIR/mkcdir" <<'EOF'
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
+if test $# -ne 1
+then
+        echo "usage: $0 <filename>"
+        exit 2
+fi
+mkdir -p -- "$1"
+cd -P -- "$1" || exit 2
 EOF
 
 cat >~/.inputrc <<'EOF'
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
 set convert-meta on
 
 "\M-p": previous-history
@@ -47,10 +69,14 @@ set convert-meta on
 EOF
 
 cat >~/.sbclrc <<'EOF'
+#| This file is generated; don't edit by hand. |#
+
 (setf *read-default-float-format* 'double-float)
 EOF
 
 cat >~/.gitconfig <<'EOF'
+# This file is generated; don't edit by hand.
+
 [core]
     editor = emacs -Q --eval '(global-set-key (kbd \"<escape>\") (quote kill-emacs))'
     logallrefupdates = true
