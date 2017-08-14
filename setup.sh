@@ -25,6 +25,7 @@ alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias dirs='dirs -v'
 alias cde='pushd ~/.emacs.d'
 alias cdd='pushd $DOTFILEDIR'
+alias gg='git grep'
 EOF
 
 if test -n "$CARGO_HOME"
@@ -86,9 +87,8 @@ cat >~/.gitconfig <<'EOF'
     name = nathan moreau
     email = nathan.moreau@m4x.org
 [alias]
-    cam = commit -avm
     ch = cherry-pick
-    cm = "!f() { git diff --cached && git commit -v; }; f"
+    cm = commit -av
     co = checkout
     d = diff
     db = !git diff $(git merge-base origin/master HEAD) HEAD
