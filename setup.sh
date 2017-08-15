@@ -26,6 +26,14 @@ alias dirs='dirs -v'
 alias cde='pushd ~/.emacs.d'
 alias cdd='pushd $DOTFILEDIR'
 alias gg='git grep'
+mkcdir () {
+        if test \$# -ne 1
+        then
+                echo "usage: mkcdir <filename>"
+        else
+                mkdir -p -- "\$1" && cd -P -- "\$1"
+        fi
+}
 EOF
 
 if test -n "$CARGO_HOME"
@@ -45,19 +53,6 @@ EOF
 $RG "\$@"
 EOF
 fi
-
-cat >"$DOTFILEDIR/mkcdir" <<'EOF'
-#!/bin/sh
-# This file is generated; don't edit by hand.
-
-if test $# -ne 1
-then
-        echo "usage: $0 <filename>"
-        exit 2
-fi
-mkdir -p -- "$1"
-cd -P -- "$1" || exit 2
-EOF
 
 cat >~/.inputrc <<'EOF'
 #!/bin/sh
