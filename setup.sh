@@ -84,7 +84,8 @@ cat >~/.gitconfig <<'EOF'
 [alias]
     bgrep = "!f() { git branch --all | grep $@; }; f"
     ch = cherry-pick
-    cm = commit -av
+    cam = commit -av
+    cm = commit -v
     co = checkout
     d = diff
     db = !git diff $(git merge-base origin/master HEAD) HEAD
