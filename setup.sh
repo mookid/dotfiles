@@ -82,6 +82,7 @@ cat >~/.gitconfig <<'EOF'
     name = nathan moreau
     email = nathan.moreau@m4x.org
 [alias]
+    ap = add -p
     bgrep = "!f() { git branch --all | grep $@; }; f"
     ch = cherry-pick
     cam = commit -av
