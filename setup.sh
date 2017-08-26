@@ -11,7 +11,7 @@
 DOTFILEDIR=$(dirname "$0")
 
 cat<<EOF
-PS1="\w$ "
+PS1='\[\033[01;33m\]\w\[\033[00m\]$ '
 PROMPT_COMMAND='echo -ne "\033]0;\${PWD}\007"'
 alias s='git status'
 alias d='git diff'
