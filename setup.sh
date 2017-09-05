@@ -134,4 +134,6 @@ cat >~/.gitconfig <<'EOF'
     rebase = true
 [push]
     default = nothing
+[clean]
+    requireForce = false
 EOF
