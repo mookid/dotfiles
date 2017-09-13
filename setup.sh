@@ -10,13 +10,14 @@
 
 DOTFILEDIR=$(dirname "$0")
 
-cat >"$DOTFILEDIR/echopath" <<'EOF'
+ECHOPATH_FILE="$DOTFILEDIR/echopath"
+cat >"$ECHOPATH_FILE" <<'EOF'
 #!/bin/sh
 # This file is generated; don't edit by hand.
 
 echo "$PATH" | gawk 'BEGIN {OFS="\n"; FS=":"}; {$1=$1; print}' | less
 EOF
-chmod +x "$DOTFILEDIR/echopath"
+chmod +x "$ECHOPATH_FILE"
 
 cat<<EOF
 PS1='\[\033[01;33m\]\w\[\033[00m\]$ '
@@ -32,7 +33,7 @@ alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias dirs='dirs -v'
 alias cde='pushd ~/.emacs.d'
 alias cdd='pushd $DOTFILEDIR'
-alias gg='git grep'
+# alias gg='git grep'
 mkcdir () {
         if test \$# -ne 1
         then
@@ -46,21 +47,23 @@ EOF
 if test -n "$CARGO_HOME"
 then
         RG="$CARGO_HOME/rg --path-separator / --no-heading --line-number --pretty"
-        cat >"$DOTFILEDIR/rg" <<EOF
+        RG1_FILE="$DOTFILEDIR/gr"
+        RG2_FILE="$DOTFILEDIR/grc"
+        cat >"$RG1_FILE" <<EOF
 #!/bin/sh
 # This file is generated; don't edit by hand.
 
 $RG "\$@" | less -R
 EOF
-        chmod +x "$DOTFILEDIR/rg"
+        chmod +x "$RG1_FILE"
 
-        cat >"$DOTFILEDIR/rgc" <<EOF
+        cat >"$RG2_FILE" <<EOF
 #!/bin/sh
 # This file is generated; don't edit by hand.
 
 $RG "\$@"
 EOF
-        chmod +x "$DOTFILEDIR/rgc"
+        chmod +x "$RG2_FILE"
 fi
 
 cat >~/.inputrc <<'EOF'
