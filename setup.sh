@@ -37,7 +37,7 @@ EOF
 
 if test -n "$CARGO_HOME"
 then
-        RG="$CARGO_HOME/rg --path-separator / -p"
+        RG="$CARGO_HOME/rg --path-separator / --no-heading --line-number --pretty"
         cat >"$DOTFILEDIR/rg" <<EOF
 #!/bin/sh
 # This file is generated; don't edit by hand.
