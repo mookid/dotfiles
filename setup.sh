@@ -10,6 +10,14 @@
 
 DOTFILEDIR=$(dirname "$0")
 
+cat >"$DOTFILEDIR/echopath" <<'EOF'
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
+echo "$PATH" | gawk 'BEGIN {OFS="\n"; FS=":"}; {$1=$1; print}' | less
+EOF
+chmod +x "$DOTFILEDIR/echopath"
+
 cat<<EOF
 PS1='\[\033[01;33m\]\w\[\033[00m\]$ '
 alias s='git status || ls'
@@ -44,6 +52,7 @@ then
 
 $RG "\$@" | less -R
 EOF
+        chmod +x "$DOTFILEDIR/rg"
 
         cat >"$DOTFILEDIR/rgc" <<EOF
 #!/bin/sh
@@ -51,6 +60,7 @@ EOF
 
 $RG "\$@"
 EOF
+        chmod +x "$DOTFILEDIR/rgc"
 fi
 
 cat >~/.inputrc <<'EOF'
