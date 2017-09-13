@@ -145,4 +145,7 @@ cat >~/.gitconfig <<'EOF'
     default = nothing
 [clean]
     requireForce = false
+[color "grep"]
+    linenumber = bold green
+    filename = magenta
 EOF
