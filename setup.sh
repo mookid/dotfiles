@@ -86,7 +86,11 @@ cat >~/.gitconfig <<'EOF'
 # This file is generated; don't edit by hand.
 
 [core]
-    editor = emacs -Q --eval '(global-set-key (kbd \"<escape>\") (quote kill-emacs))'
+    editor = emacs -Q\
+               --eval '(defun do-commit () (interactive) (save-buffer) (kill-emacs))'\
+               --eval '(defun no-commit () (interactive) (erase-buffer) (do-commit))'\
+               --eval '(global-set-key (kbd \"C-c C-c\") (quote do-commit))'\
+               --eval '(global-set-key (kbd \"C-c C-k\") (quote no-commit))'
     logallrefupdates = true
 [gc]
     auto = 256
