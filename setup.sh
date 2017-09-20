@@ -126,19 +126,6 @@ cat >~/.gitconfig <<'EOF'
     wcc = whatchanged --oneline
     wip = commit -am wip
     wl = worktree list --porcelain
-    worktree-reset = "!f() { \
-        PWD_ORIG=$(pwd); \
-        for wt in $(git worktree list | awk '{print $1}'); \
-        do \
-            if test -e $wt; \
-            then \
-                cd $wt && \
-                git checkout $(basename $wt) > /dev/null 2>&1 && \
-                git reset --hard  > /dev/null 2>&1; \
-            fi; \
-        done; \
-        cd $PWD_ORIG; \
-    }; f"
 [merge]
     tool = ediff
 [mergetool "ediff"]
