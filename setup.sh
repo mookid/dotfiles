@@ -142,6 +142,7 @@ cat >~/.gitconfig <<'EOF'
 [color "branch"]
     upstream = bold cyan
 [diff]
+    mnemonicprefix = true
     algorithm = patience
 [pull]
     rebase = true
