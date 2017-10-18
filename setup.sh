@@ -21,19 +21,19 @@ chmod +x "$ECHOPATH_FILE"
 
 cat<<EOF
 PS1='\[\033[01;33m\]\w\[\033[00m\]$ '
-alias s='git status || ls'
+alias cdd='pushd $DOTFILEDIR'
+alias cde='pushd ~/.emacs.d'
 alias d='git diff'
 alias dc='git diff --cached'
-alias em='(emacsclient -c 2>/dev/null || emacs) &'
-alias l='ls -lAH'
-alias vv='git branch -vv'
-alias sbcl='rlwrap sbcl'
-alias ocaml='rlwrap ocaml'
-alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias dirs='dirs -v'
-alias cde='pushd ~/.emacs.d'
-alias cdd='pushd $DOTFILEDIR'
-# alias gg='git grep'
+alias em='(emacsclient -c 2>/dev/null || emacs) &'
+alias gg='git grep'
+alias l='ls -lAH'
+alias ocaml='rlwrap ocaml'
+alias s='git status || ls'
+alias sbcl='rlwrap sbcl'
+alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
+alias vv='git branch -vv'
 ff () {
         if test \$# -ne 1
         then
