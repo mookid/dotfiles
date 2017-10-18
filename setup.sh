@@ -42,6 +42,14 @@ mkcdir () {
                 mkdir -p -- "\$1" && cd -P -- "\$1"
         fi
 }
+ff () {
+        if test \$# -ne 1
+        then
+                echo "usage: ff <pattern>"
+        else
+                git ls-files "*\$1*" || find . -name "*\$1*"
+        fi
+}
 EOF
 
 if test -n "$CARGO_HOME"
