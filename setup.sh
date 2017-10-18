@@ -34,20 +34,20 @@ alias dirs='dirs -v'
 alias cde='pushd ~/.emacs.d'
 alias cdd='pushd $DOTFILEDIR'
 # alias gg='git grep'
-mkcdir () {
-        if test \$# -ne 1
-        then
-                echo "usage: mkcdir <filename>"
-        else
-                mkdir -p -- "\$1" && cd -P -- "\$1"
-        fi
-}
 ff () {
         if test \$# -ne 1
         then
                 echo "usage: ff <pattern>"
         else
                 git ls-files "*\$1*" || find . -name "*\$1*"
+        fi
+}
+mkcdir () {
+        if test \$# -ne 1
+        then
+                echo "usage: mkcdir <filename>"
+        else
+                mkdir -p -- "\$1" && cd -P -- "\$1"
         fi
 }
 EOF
