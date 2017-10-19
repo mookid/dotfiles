@@ -74,6 +74,37 @@ EOF
         chmod +x "$RG2_FILE"
 fi
 
+MY_GIT_PUSH_FILE="$DOTFILEDIR/my-git-push"
+cat >"$MY_GIT_PUSH_FILE" <<EOF
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
+ERR=\$(mktemp)
+if git push origin : "\$@" --dry-run 2>"\$ERR"
+then
+        if grep "Everything up-to-date" "\$ERR" >/dev/null
+        then
+                echo "Up to date"
+                exit 0
+        else
+                cat "\$ERR"
+                printf "proceed? (y/N) "
+                read -r ANSWER
+                case "\$ANSWER" in
+                        y|Y)
+                                git push origin : "\$@"
+                                exit 0
+                                ;;
+                esac
+                exit 0
+        fi
+else
+        cat "\$ERR"
+        exit 2
+fi
+EOF
+chmod +x "$MY_GIT_PUSH_FILE"
+
 cat >~/.inputrc <<'EOF'
 #!/bin/sh
 # This file is generated; don't edit by hand.
@@ -122,6 +153,8 @@ cat >~/.gitconfig <<'EOF'
     la = log --all --decorate --oneline --graph --color -5
     laa = log --all --decorate --oneline --graph --color
     ll = log --decorate --oneline --graph --color
+    p = "!f() { my-git-push; }; f"
+    pf = "!f() { my-git-push -f; }; f"
     r1 = reset HEAD^
     remove-gone = "!f() { git branch -vv | cut -c 3- | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
