@@ -15,7 +15,7 @@ cat >"$ECHOPATH_FILE" <<'EOF'
 #!/bin/sh
 # This file is generated; don't edit by hand.
 
-echo "$PATH" | gawk 'BEGIN {OFS="\n"; FS=":"}; {$1=$1; print}' | less
+echo "$PATH" | awk 'BEGIN {OFS="\n"; FS=":"}; {$1=$1; print}' | less
 EOF
 chmod +x "$ECHOPATH_FILE"
 
