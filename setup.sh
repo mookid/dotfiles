@@ -1,14 +1,32 @@
 #!/bin/sh
 
 # Setup:
-# Put the following lines in .bashrc:
-#
-# PATH=/path/to/this/file:$PATH
-# ./path/to/setup.sh | tee somefile
-# . somefile
-#
+# Execute with the option --init.
 
 DOTFILEDIR=$(dirname "$0")
+
+case $1 in
+        --init)
+                cat >>~/.bashrc <<EOF
+
+## Execute setup script.
+## This part of .bashrc has been generated.
+## {{{
+if  test -z \$DOTFILES_DIR_IN_PATH
+then
+        PATH=$DOTFILEDIR:\$PATH
+        DOTFILES_DIR_IN_PATH=1
+fi
+
+bash_aliases_gen=\$(mktemp)
+$0 | tee \$bash_aliases_gen
+. \$bash_aliases_gen
+unset \$bash_aliases_gen
+## }}}
+EOF
+                exit 0
+                ;;
+esac
 
 ECHOPATH_FILE="$DOTFILEDIR/echopath"
 cat >"$ECHOPATH_FILE" <<'EOF'
