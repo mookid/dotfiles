@@ -3,7 +3,8 @@
 # Setup:
 # Execute with the option --init.
 
-DOTFILEDIR=$(dirname "$0")
+DOTFILE=$(readlink -f "$0")
+DOTFILEDIR=$(readlink -f $(dirname "$0"))
 
 case $1 in
         --init)
@@ -19,9 +20,9 @@ then
 fi
 
 bash_aliases_gen=\$(mktemp)
-$0 | tee \$bash_aliases_gen
+$DOTFILE | tee \$bash_aliases_gen
 . \$bash_aliases_gen
-unset \$bash_aliases_gen
+unset bash_aliases_gen
 ## }}}
 EOF
                 exit 0
