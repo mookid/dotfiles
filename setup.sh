@@ -168,7 +168,7 @@ cat >~/.gitconfig <<'EOF'
     db = !git diff $(git merge-base origin/master HEAD) HEAD
     dc = diff --cached
     du = diff @{u} HEAD
-    f = fetch
+    f = fetch --all --prune
     l = log --decorate --oneline --graph --color -5
     la = log --all --decorate --oneline --graph --color -5
     laa = log --all --decorate --oneline --graph --color
