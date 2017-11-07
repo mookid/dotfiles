@@ -74,7 +74,7 @@ EOF
 
 if test -n "$CARGO_HOME"
 then
-        RG="$CARGO_HOME/rg --path-separator / --no-heading --line-number --pretty"
+        RG="$CARGO_HOME/bin/rg --path-separator / --no-heading --line-number --pretty"
         RG1_FILE="$DOTFILEDIR/gr"
         RG2_FILE="$DOTFILEDIR/grc"
         cat >"$RG1_FILE" <<EOF
