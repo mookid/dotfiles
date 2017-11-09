@@ -39,7 +39,7 @@ EOF
 chmod +x "$ECHOPATH_FILE"
 
 cat<<EOF
-PS1='\[\033[01;33m\]\w\[\033[01;30m\][\$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
+PS1='\[\033[01;33m\]\w\[\033[01;32m\][\$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
 alias cdd='pushd $DOTFILEDIR'
 alias cde='pushd ~/.emacs.d'
 alias d='git diff'
