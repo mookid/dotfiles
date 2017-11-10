@@ -135,6 +135,7 @@ set convert-meta on
 "\M-n": next-history
 set completion-ignore-case on
 set colored-completion-prefix on
+"\M-/": menu-complete
 EOF
 
 cat >~/.sbclrc <<'EOF'
