@@ -133,6 +133,8 @@ set convert-meta on
 
 "\M-p": previous-history
 "\M-n": next-history
+set completion-ignore-case on
+set colored-completion-prefix on
 EOF
 
 cat >~/.sbclrc <<'EOF'
