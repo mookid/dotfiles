@@ -4,15 +4,13 @@
 # Execute with the option --init.
 
 DOTFILE=$(readlink -f "$0")
+BASHRC=~/.bashrc
 DOTFILEDIR=$(readlink -f $(dirname "$0"))
 
 case $1 in
         --init)
-                cat >>~/.bashrc <<EOF
-
-## Execute setup script.
-## This part of .bashrc has been generated.
-## {{{
+                cat >>"$BASHRC" <<EOF
+## {{{ This part of .bashrc has been generated.
 if  test -z \$DOTFILES_DIR_IN_PATH
 then
         PATH=$DOTFILEDIR:\$PATH
@@ -25,6 +23,15 @@ $DOTFILE | tee \$bash_aliases_gen
 unset bash_aliases_gen
 ## }}}
 EOF
+                exit 0
+                ;;
+
+        --reset)
+                BASHRC_TMP=$(mktemp)
+                awk '/## {{{/ {FILTER=1}
+                    {if(!FILTER) print}
+                    /## }}}/ {FILTER=0} ' "$BASHRC" >"$BASHRC_TMP"
+                mv "$BASHRC_TMP" "$BASHRC"
                 exit 0
                 ;;
 esac
