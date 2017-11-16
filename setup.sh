@@ -186,6 +186,7 @@ cat >~/.gitconfig <<'EOF'
     p = "!f() { my-git-push; }; f"
     pf = "!f() { my-git-push -f; }; f"
     r1 = reset HEAD^
+    redate = commit --amend --date=now --no-edit
     remove-gone = "!f() { git branch -vv | cut -c 3- | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
     root = "!f() { cd $(git rev-parse --show-toplevel); }; f"
