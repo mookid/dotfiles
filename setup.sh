@@ -14,7 +14,7 @@ case $1 in
 if  test -z \$DOTFILES_DIR_IN_PATH
 then
         PATH=$DOTFILEDIR:\$PATH
-        DOTFILES_DIR_IN_PATH=1
+        export DOTFILES_DIR_IN_PATH=1
 fi
 
 bash_aliases_gen=\$(mktemp)
