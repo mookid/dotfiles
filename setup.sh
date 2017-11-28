@@ -132,6 +132,18 @@ fi
 EOF
 chmod +x "$MY_GIT_PUSH_FILE"
 
+if command -v openbox >/dev/null
+then
+        OPENBOX_CONFIG=~/.config/openbox
+        mkdir -p "$OPENBOX_CONFIG"
+        find "$OPENBOX_CONFIG" -maxdepth 1 -type f -name "*.xml" |\
+                while read file
+                do
+                        cp -f "$DOTFILEDIR/openbox.xml" $file
+                done
+        openbox --reconfigure
+fi
+
 cat >~/.inputrc <<'EOF'
 #!/bin/sh
 # This file is generated; don't edit by hand.
