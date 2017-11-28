@@ -189,9 +189,7 @@ cat >~/.gitconfig <<'EOF'
     redate = commit --amend --date=now --no-edit
     remove-gone = "!f() { git branch -vv | cut -c 3- | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
     rh= reset --hard
-    root = "!f() { cd $(git rev-parse --show-toplevel); }; f"
     s = status
-    sup = log --decorate --oneline --graph --color HEAD..@{u}
     wc = whatchanged --oneline -5
     wcc = whatchanged --oneline
     wip = commit -am wip
