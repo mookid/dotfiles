@@ -277,14 +277,9 @@
 
   <!--  Lubuntu specific : Keybindings -->
 
-  <!-- Keybindings for running applications on Home + E -->
   <keybind key="W-e">
     <action name="Execute">
-      <startupnotify>
-        <enabled>true</enabled>
-        <name>File manager</name>
-      </startupnotify>
-      <command>lxsession-default file_manager</command>
+      <command>firefox</command>
     </action>
   </keybind>
   <keybind key="W-x">
