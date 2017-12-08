@@ -81,24 +81,14 @@ EOF
 
 if test -n "$CARGO_HOME"
 then
-        RG="$CARGO_HOME/bin/rg --path-separator / --no-heading --line-number --pretty"
-        RG1_FILE="$DOTFILEDIR/gr"
-        RG2_FILE="$DOTFILEDIR/grc"
-        cat >"$RG1_FILE" <<EOF
+        RG_FILE="$DOTFILEDIR/gr"
+        cat >"$RG_FILE" <<EOF
 #!/bin/sh
 # This file is generated; don't edit by hand.
 
-$RG "\$@" | less -R
+"\$CARGO_HOME/bin/rg" --path-separator / --no-heading --line-number --pretty "\$@"
 EOF
-        chmod +x "$RG1_FILE"
-
-        cat >"$RG2_FILE" <<EOF
-#!/bin/sh
-# This file is generated; don't edit by hand.
-
-$RG "\$@"
-EOF
-        chmod +x "$RG2_FILE"
+        chmod +x "$RG_FILE"
 fi
 
 MY_GIT_PUSH_FILE="$DOTFILEDIR/my-git-push"
