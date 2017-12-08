@@ -127,9 +127,9 @@ then
         OPENBOX_CONFIG=~/.config/openbox
         mkdir -p "$OPENBOX_CONFIG"
         find "$OPENBOX_CONFIG" -maxdepth 1 -type f -name "*.xml" |\
-                while read file
+                while read -r file
                 do
-                        cp -f "$DOTFILEDIR/openbox.xml" $file
+                        cp -f "$DOTFILEDIR/openbox.xml" "$file"
                 done
         openbox --reconfigure
 fi
