@@ -142,7 +142,7 @@ set convert-meta on
 
 "\M-p": previous-history
 "\M-n": next-history
-"\M-l": "\C-e |less -R "
+"\C-\M-l": "\C-e |less -R "
 set completion-ignore-case on
 set colored-completion-prefix on
 "\M-/": menu-complete
