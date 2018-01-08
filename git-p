@@ -1,0 +1,26 @@
+#!/bin/sh
+# This file is generated; don't edit by hand.
+
+ERR=$(mktemp)
+if git push origin : "$@" --dry-run 2>"$ERR"
+then
+        if grep "Everything up-to-date" "$ERR" >/dev/null
+        then
+                echo "Up to date"
+                exit 0
+        else
+                cat "$ERR"
+                printf "proceed? (y/N) "
+                read -r ANSWER
+                case "$ANSWER" in
+                        y|Y)
+                                git push origin : "$@"
+                                exit 0
+                                ;;
+                esac
+                exit 0
+        fi
+else
+        cat "$ERR"
+        exit 2
+fi

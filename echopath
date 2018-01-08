@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$PATH" | awk 'BEGIN {OFS="\n"; FS=":"}; {$1=$1; print}'

@@ -1,0 +1,1 @@
+(setf *read-default-float-format* 'double-float)

@@ -36,19 +36,11 @@ EOF
                 ;;
 esac
 
-ECHOPATH_FILE="$DOTFILEDIR/echopath"
-cat >"$ECHOPATH_FILE" <<'EOF'
-#!/bin/sh
-# This file is generated; don't edit by hand.
-
-echo "$PATH" | awk 'BEGIN {OFS="\n"; FS=":"}; {$1=$1; print}' | less
-EOF
-chmod +x "$ECHOPATH_FILE"
-
 cat<<EOF
 PS1='\[\033[01;33m\]\w\[\033[01;32m\][\$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
 alias cdd='pushd $DOTFILEDIR'
 alias cde='pushd ~/.emacs.d'
+alias cdp='pushd ~/projects'
 alias d='git diff'
 alias dc='git diff --cached'
 alias dirs='dirs -v'
@@ -61,14 +53,6 @@ alias s='git status || ls'
 alias sbcl='rlwrap sbcl'
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias vv='git branch -vv'
-ff () {
-        if test \$# -ne 1
-        then
-                echo "usage: ff <pattern>"
-        else
-                git ls-files "*\$1*" || find . -name "*\$1*"
-        fi
-}
 mkcdir () {
         if test \$# -ne 1
         then
@@ -78,49 +62,6 @@ mkcdir () {
         fi
 }
 EOF
-
-if test -n "$CARGO_HOME"
-then
-        RG_FILE="$DOTFILEDIR/gr"
-        cat >"$RG_FILE" <<EOF
-#!/bin/sh
-# This file is generated; don't edit by hand.
-
-"\$CARGO_HOME/bin/rg" --path-separator / --no-heading --line-number --pretty "\$@"
-EOF
-        chmod +x "$RG_FILE"
-fi
-
-MY_GIT_PUSH_FILE="$DOTFILEDIR/my-git-push"
-cat >"$MY_GIT_PUSH_FILE" <<EOF
-#!/bin/sh
-# This file is generated; don't edit by hand.
-
-ERR=\$(mktemp)
-if git push origin : "\$@" --dry-run 2>"\$ERR"
-then
-        if grep "Everything up-to-date" "\$ERR" >/dev/null
-        then
-                echo "Up to date"
-                exit 0
-        else
-                cat "\$ERR"
-                printf "proceed? (y/N) "
-                read -r ANSWER
-                case "\$ANSWER" in
-                        y|Y)
-                                git push origin : "\$@"
-                                exit 0
-                                ;;
-                esac
-                exit 0
-        fi
-else
-        cat "\$ERR"
-        exit 2
-fi
-EOF
-chmod +x "$MY_GIT_PUSH_FILE"
 
 if command -v openbox >/dev/null
 then
@@ -134,88 +75,4 @@ then
         openbox --reconfigure
 fi
 
-cat >~/.inputrc <<'EOF'
-#!/bin/sh
-# This file is generated; don't edit by hand.
-
-set convert-meta on
-
-"\M-p": previous-history
-"\M-n": next-history
-"\C-\M-l": "\C-e |less -R "
-set completion-ignore-case on
-set colored-completion-prefix on
-"\M-/": menu-complete
-EOF
-
-cat >~/.sbclrc <<'EOF'
-#| This file is generated; don't edit by hand. |#
-
-(setf *read-default-float-format* 'double-float)
-EOF
-
-cat >~/.gitconfig <<'EOF'
-# This file is generated; don't edit by hand.
-
-[core]
-    editor = emacs -Q\
-               --eval '(defun do-commit () (interactive) (save-buffer) (kill-emacs))'\
-               --eval '(defun no-commit () (interactive) (erase-buffer) (do-commit))'\
-               --eval '(global-set-key (kbd \"C-c C-c\") (quote do-commit))'\
-               --eval '(global-set-key (kbd \"C-c C-k\") (quote no-commit))'
-    logallrefupdates = true
-[gc]
-    auto = 256
-[user]
-    name = nathan moreau
-    email = nathan.moreau@m4x.org
-[alias]
-    ame = commit -av --amend
-    ap = add -p
-    bgrep = "!f() { git branch --all | grep $@; }; f"
-    ch = cherry-pick
-    cam = commit -av
-    cm = commit -v
-    co = checkout
-    d = diff
-    db = !git diff $(git merge-base origin/master HEAD) HEAD
-    dc = diff --cached
-    du = diff @{u} HEAD
-    f = fetch --all --prune
-    l = log --decorate --oneline --graph --color -5
-    la = log --all --decorate --oneline --graph --color -5
-    laa = log --all --decorate --oneline --graph --color
-    ll = log --decorate --oneline --graph --color
-    p = "!f() { my-git-push; }; f"
-    pf = "!f() { my-git-push -f; }; f"
-    r1 = reset HEAD^
-    redate = commit --amend --date=now --no-edit
-    remove-gone = "!f() { git branch -vv | cut -c 3- | awk '/gone/ {print $1}' | xargs -r git branch -D; }; f"
-    rh= reset --hard
-    s = status
-    wc = whatchanged --oneline -5
-    wcc = whatchanged --oneline
-    wip = commit -am wip
-    wl = worktree list --porcelain
-[merge]
-    tool = ediff
-[mergetool "ediff"]
-    cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
-[color "branch"]
-    upstream = bold cyan
-[diff]
-    mnemonicprefix = true
-    algorithm = patience
-[pull]
-    rebase = true
-[push]
-    default = nothing
-[clean]
-    requireForce = false
-[color "grep"]
-    linenumber = bold green
-    filename = magenta
-[fetch]
-    all = true
-    prune = true
-EOF
+find "$DOTFILEDIR/dotfiles" -type f -exec cp '{}' "$HOME" \;

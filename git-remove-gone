@@ -1,0 +1,4 @@
+#!/bin/sh
+
+BRANCHES=$(git branch -vv | cut -c 3- | awk '/gone/ {print $1}')
+test -z "$BRANCHES" || git branch -D "$BRANCHES"
