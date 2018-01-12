@@ -4,7 +4,9 @@
 # Execute with the option --init.
 
 DOTFILE=$(readlink -f "$0")
-BASHRC=~/.bashrc
+BASHRC="$HOME/.bashrc"
+EMACSD="$HOME/.emacs.d"
+PROJECTS="$HOME/projects"
 DOTFILEDIR=$(readlink -f $(dirname "$0"))
 
 case $1 in
@@ -39,8 +41,8 @@ esac
 cat<<EOF
 PS1='\[\033[01;33m\]\w\[\033[01;32m\][\$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
 alias cdd='pushd $DOTFILEDIR'
-alias cde='pushd ~/.emacs.d'
-alias cdp='pushd ~/projects'
+alias cde='pushd $EMACSD'
+alias cdp='pushd $PROJECTS'
 alias d='git diff'
 alias dc='git diff --cached'
 alias dirs='dirs -v'
