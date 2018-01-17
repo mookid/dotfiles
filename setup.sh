@@ -3,32 +3,28 @@
 # Setup:
 # Execute with the option --init.
 
-DOTFILE=$(readlink -f "$0")
-BASHRC="$HOME/.bashrc"
-EMACSD="$HOME/.emacs.d"
-PROJECTS="$HOME/projects"
-DOTFILEDIR=$(readlink -f $(dirname "$0"))
-
 case $1 in
         --init)
+                BASHRC="$HOME/.bashrc"
+                DOTFILE=$(readlink -f "$0")
+                DOTFILEDIR=$(readlink -f $(dirname "$0"))
                 cat >>"$BASHRC" <<EOF
 ## {{{ This part of .bashrc has been generated.
 if  test -z \$DOTFILES_DIR_IN_PATH
 then
-        PATH=$DOTFILEDIR:\$PATH
+        export DOTFILEDIR=$DOTFILEDIR
+        export PATH=\$DOTFILEDIR:\$PATH
         export DOTFILES_DIR_IN_PATH=1
 fi
 
-bash_aliases_gen=\$(mktemp)
-$DOTFILE | tee \$bash_aliases_gen
-. \$bash_aliases_gen
-unset bash_aliases_gen
+. $DOTFILE
 ## }}}
 EOF
                 exit 0
                 ;;
 
         --reset)
+                BASHRC="$HOME/.bashrc"
                 BASHRC_TMP=$(mktemp)
                 awk '/## {{{/ {FILTER=1}
                     {if(!FILTER) print}
@@ -38,8 +34,7 @@ EOF
                 ;;
 esac
 
-cat<<EOF
-PS1='\[\033[01;33m\]\w\[\033[01;32m\][\$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
+PS1='\[\033[01;33m\]\w\[\033[01;32m\][$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
 alias cdd='pushd $DOTFILEDIR'
 alias cde='pushd $EMACSD'
 alias cdp='pushd $PROJECTS'
@@ -56,18 +51,17 @@ alias sbcl='rlwrap sbcl'
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
 alias vv='git branch -vv'
 mkcdir () {
-        if test \$# -ne 1
+        if test $# -ne 1
         then
                 echo "usage: mkcdir <filename>"
         else
-                mkdir -p -- "\$1" && cd -P -- "\$1"
+                mkdir -p -- "$1" && cd -P -- "$1"
         fi
 }
-EOF
 
 if command -v openbox >/dev/null
 then
-        OPENBOX_CONFIG=~/.config/openbox
+        OPENBOX_CONFIG="$HOME/.config/openbox"
         mkdir -p "$OPENBOX_CONFIG"
         find "$OPENBOX_CONFIG" -maxdepth 1 -type f -name "*.xml" |\
                 while read -r file
