@@ -35,9 +35,9 @@ EOF
 esac
 
 PS1='\[\033[01;33m\]\w\[\033[01;32m\][$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
+CDPATH="$HOME"
 alias cdd='pushd $DOTFILEDIR'
 alias cde='pushd $HOME/.emacs.d'
-alias cdp='pushd $HOME/projects'
 alias d='git diff'
 alias dc='git diff --cached'
 alias dirs='dirs -v'
@@ -45,7 +45,8 @@ alias e='emacs &'
 alias gg='git grep'
 alias l='ls -lAH'
 alias ocaml='rlwrap ocaml'
-alias p='echo $?'
+alias p='pushd'
+alias pd='popd'
 alias s='git status || ls'
 alias sbcl='rlwrap sbcl'
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
