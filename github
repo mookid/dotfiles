@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if test -z "$GITHUBPROJECTS"
+then
+        echo "Error: GITHUBPROJECTS variable not set"
+        exit 2
+fi
+
+if test $# != 1
+then
+        echo "usage: $0 <url>"
+        exit 2
+fi
+
+cd "$GITHUBPROJECTS"
+git clone $1
