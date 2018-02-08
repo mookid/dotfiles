@@ -37,6 +37,7 @@ esac
 PS1='\[\033[01;33m\]\w\[\033[01;32m\][$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
 export GITHUBPROJECTS="$HOME/projects"
 CDPATH="$HOME"
+CDPATH="$GITHUBPROJECTS:$CDPATH"
 alias cdd='pushd $DOTFILEDIR'
 alias cde='pushd $HOME/.emacs.d'
 alias d='git diff'
