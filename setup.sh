@@ -34,7 +34,20 @@ EOF
                 ;;
 esac
 
-PS1='\[\033[01;33m\]\w\[\033[01;32m\][$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
+PROMPT_COMMAND=__update_error_code
+__update_error_code()
+{
+        LAST_ERROR_CODE=$?
+        PS1_PREFIX='\[\033[01;33m\]\w'
+        PS1_ERROR=
+        PS1_SUFFIX='\[\033[01;37m\]\$ \[\033[0m\]'
+        if test $LAST_ERROR_CODE -ne 0
+        then
+                PS1_ERROR="\[\033[01;31m\][$LAST_ERROR_CODE]"
+        fi
+        PS1="$PS1_PREFIX$PS1_ERROR$PS1_SUFFIX"
+}
+
 export GITHUBPROJECTS="$HOME/projects"
 CDPATH="$HOME"
 CDPATH="$GITHUBPROJECTS:$CDPATH"
