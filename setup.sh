@@ -34,18 +34,7 @@ EOF
                 ;;
 esac
 
-__RESTORE__=$(echo -en '\033[0m')
-__LIGHTGRAY__=$(echo -en '\033[00;37m')
-__RED__=$(echo -en '\033[01;31m')
-__GREEN__=$(echo -en '\033[01;32m')
-__YELLOW__=$(echo -en '\033[01;33m')
-__BLUE__=$(echo -en '\033[01;34m')
-__MAGENTA__=$(echo -en '\033[01;35m')
-__PURPLE__=$(echo -en '\033[01;35m')
-__CYAN__=$(echo -en '\033[01;36m')
-__WHITE__=$(echo -en '\033[01;37m')
-
-PS1='$__YELLOW__\w$__GREEN__[$?]$__WHITE__\$$__RESTORE__ '
+PS1='\[\033[01;33m\]\w\[\033[01;32m\][$?]\[\033[01m\]\[\033[01;37m\]$\[\033[00m\] '
 export GITHUBPROJECTS="$HOME/projects"
 CDPATH="$HOME"
 CDPATH="$GITHUBPROJECTS:$CDPATH"
