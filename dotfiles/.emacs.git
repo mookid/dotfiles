@@ -1,0 +1,14 @@
+;;; my-init.el ---  -*- mode: emacs-lisp -*-
+
+(defun do-commit ()
+  (interactive)
+  (save-buffer)
+  (kill-emacs))
+
+(defun no-commit ()
+  (interactive)
+  (erase-buffer)
+  (do-commit))
+
+(global-set-key (kbd "C-c C-c") (quote do-commit))
+(global-set-key (kbd "C-c C-k") (quote no-commit))
