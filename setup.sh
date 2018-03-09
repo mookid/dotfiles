@@ -35,8 +35,7 @@ EOF
 esac
 
 PROMPT_COMMAND=__update_error_code
-__update_error_code()
-{
+__update_error_code() {
         LAST_ERROR_CODE=$?
         PS1_PREFIX='\[\033[01;33m\]\w'
         PS1_ERROR=
@@ -46,6 +45,13 @@ __update_error_code()
                 PS1_ERROR="\[\033[01;31m\][$LAST_ERROR_CODE]"
         fi
         PS1="$PS1_PREFIX$PS1_ERROR$PS1_SUFFIX"
+}
+
+github() {
+        if $(which github) $@
+        then
+                pushd $(echo $1 | awk -F/ '{print $(NF)}')
+        fi
 }
 
 export GITHUBPROJECTS="$HOME/projects"
