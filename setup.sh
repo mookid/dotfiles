@@ -47,13 +47,6 @@ __update_error_code() {
         PS1="$PS1_PREFIX$PS1_ERROR$PS1_SUFFIX"
 }
 
-github() {
-        if $(which github) $@
-        then
-                pushd $(echo $1 | awk -F/ '{print $(NF)}')
-        fi
-}
-
 export GITHUBPROJECTS="$HOME/projects"
 CDPATH="$HOME"
 CDPATH="$GITHUBPROJECTS:$CDPATH"
@@ -91,6 +84,13 @@ man() {
                 LESS_TERMCAP_ue="$(printf "\e[0m")" \
                 LESS_TERMCAP_us="$(printf "\e[1;32m")" \
                 man "${@}"
+}
+
+github() {
+        if $(which github) $@
+        then
+                pushd $GITHUBPROJECTS/$(echo $1 | sed 's/.*\///g' | sed 's/.git$//g')
+        fi
 }
 
 if command -v openbox >/dev/null
