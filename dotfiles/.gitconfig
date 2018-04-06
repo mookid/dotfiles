@@ -15,7 +15,6 @@
     co = checkout
     d = diff
     dc = diff --cached
-    dm = diff origin/master..HEAD
     du = diff @{u} HEAD
     f = fetch --all --prune
     l = log --decorate --oneline --graph --color -5
