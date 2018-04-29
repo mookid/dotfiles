@@ -1,0 +1,17 @@
+Font=DejaVu Sans Mono
+FontHeight=14
+BoldAsFont=no
+CursorType=block
+CursorBlinks=no
+RightClickAction=extend
+BellType=0
+BellFlash=yes
+CursorColour=15,73,153
+ForegroundColour=153,153,153
+BackgroundColour=0,0,0
+BellTaskbar=no
+Scrollbar=none
+FontSmoothing=full
+Locale=C
+Charset=UTF-8
+ThemeFile=xterm
