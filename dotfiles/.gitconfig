@@ -21,6 +21,7 @@
     la = log --all --decorate --oneline --graph --color -5
     laa = log --all --decorate --oneline --graph --color
     ll = log --decorate --oneline --graph --color
+    mb = merge-base HEAD origin/master
     r1 = reset HEAD^
     redate = commit --amend --date=now --no-edit
     rh= reset --hard
