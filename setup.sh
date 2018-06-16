@@ -88,9 +88,10 @@ man() {
 }
 
 github() {
-        if $(which github) $@
+        if $(which github) "$@"
         then
-                pushd $GITHUBPROJECTS/$(echo $1 | sed 's/.*\///g' | sed 's/.git$//g')
+                REPONAME=$(echo "$1" | sed 's/.*\\///g' | sed 's/.git$//g')
+                pushd "$GITHUBPROJECTS/$REPONAME"
         fi
 }
 
