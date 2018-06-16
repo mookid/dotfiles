@@ -108,3 +108,9 @@ then
 fi
 
 find "$DOTFILEDIR/dotfiles" -type f -exec cp '{}' "$HOME" \;
+
+case $(uname -s) in
+        CYGWIN*)
+                source windows_ssh_setup.sh
+        ;;
+esac
