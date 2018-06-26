@@ -26,6 +26,7 @@
     redate = commit --amend --date=now --no-edit
     rh= reset --hard
     s = status
+    vv = branch -vv
     wc = whatchanged --oneline -5
     wcc = whatchanged --oneline
     wip = commit -am wip

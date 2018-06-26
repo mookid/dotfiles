@@ -65,7 +65,6 @@ alias p='popd'
 alias s='git status || ls'
 alias sbcl='rlwrap sbcl'
 alias startx='startx 2>/tmp/x_stderr >/tmp/x_stdout &'
-alias vv='git branch -vv'
 mkcdir () {
         if test $# -ne 1
         then
