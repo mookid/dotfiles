@@ -6,3 +6,5 @@ set convert-meta on
 set completion-ignore-case on
 set colored-completion-prefix on
 "\M-/": menu-complete
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
