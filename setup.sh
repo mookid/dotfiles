@@ -89,8 +89,7 @@ man() {
 github() {
         if $(which github) "$@"
         then
-                REPONAME=$(echo "$1" | sed 's/.*\\///g' | sed 's/.git$//g')
-                pushd "$GITHUBPROJECTS/$REPONAME"
+                pushd "$GITHUBPROJECTS/$(basename "$1" .git)"
         fi
 }
 
