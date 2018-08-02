@@ -47,6 +47,7 @@ __update_error_code() {
         PS1="$PS1_PREFIX$PS1_ERROR$PS1_SUFFIX"
 }
 
+export HISTCONTROL=ignoreboth:erasedups
 export GITHUBPROJECTS="$HOME/projects"
 CDPATH="$HOME"
 CDPATH="$GITHUBPROJECTS:$CDPATH"
