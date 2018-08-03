@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if test  $# -ne 1
+then
+        echo "usage: $0 <directory>"
+        exit 1
+fi
+
+find "$1" -type f -name "* *" -printf "%P\\n" |
+while read -r f
+do
+        DIRNAME=$(dirname "$f")
+        BASENAME=$(basename "$f")
+        NEWBASENAME=$(echo "$BASENAME" | sed 's/ /_/g')
+        NEWF="$DIRNAME/$NEWBASENAME"
+        if test -e "$NEWF"
+        then
+                echo error: file "$NEWF" already exists >&2
+        else
+                mv "$f" "$NEWF"
+        fi
+done
