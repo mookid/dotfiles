@@ -1,36 +1,61 @@
 #!/bin/sh
 
-# Setup:
-# Execute with the option --init.
+usage() {
+cat <<EOF
+usage:
+      --setup                   run the setup script
+      --install                 add setup code to .bashrc
+      --uninstall               remove setup code from .bashrc
+      --help                    print this help message
+EOF
+}
+
+# locations
+BASHRC="$HOME/.bashrc"
+OPENBOX_CONFIG="$HOME/.config/openbox"
+GIT_CONFIG="$HOME/.config/git"
+DOTFILES_DIRECTORY="$SCRIPTS_REPOSITORY/dotfiles"
+GITHUBPROJECTS="$HOME/projects"
+export GITHUBPROJECTS
 
 case $1 in
-        --init)
-                BASHRC="$HOME/.bashrc"
-                DOTFILE=$(readlink -f "$0")
-                DOTFILEDIR=$(readlink -f $(dirname "$0"))
+        --help)
+                usage
+                exit 0
+                ;;
+
+        --install)
+
                 cat >>"$BASHRC" <<EOF
 ## {{{ This part of .bashrc has been generated.
-if  test -z \$DOTFILES_DIR_IN_PATH
+if  test -z \$SCRIPTS_REPOSITORY_IN_PATH
 then
-        export DOTFILEDIR=$DOTFILEDIR
-        export PATH=\$DOTFILEDIR:\$PATH
-        export DOTFILES_DIR_IN_PATH=1
+        export SCRIPTS_REPOSITORY=$(readlink -f $(dirname "$0"))
+        export PATH=\$SCRIPTS_REPOSITORY:\$PATH
+        export SCRIPTS_REPOSITORY_IN_PATH=1
 fi
 
-. $DOTFILE
+. $(readlink -f "$0") --setup
 ## }}}
 EOF
                 exit 0
                 ;;
 
-        --reset)
-                BASHRC="$HOME/.bashrc"
+        --uninstall)
                 BASHRC_TMP=$(mktemp)
                 awk '/## {{{/ {FILTER=1}
                     {if(!FILTER) print}
                     /## }}}/ {FILTER=0} ' "$BASHRC" >"$BASHRC_TMP"
                 mv "$BASHRC_TMP" "$BASHRC"
                 exit 0
+                ;;
+
+        --setup)
+                ;;
+
+        *)
+                usage
+                exit 2
                 ;;
 esac
 
@@ -42,16 +67,15 @@ __update_error_code() {
         PS1_SUFFIX='\[\033[01;37m\]\$ \[\033[0m\]'
         if test $LAST_ERROR_CODE -ne 0
         then
-                PS1_ERROR="\[\033[01;31m\][$LAST_ERROR_CODE]"
+                PS1_ERROR="\\[\\033[01;31m\\][$LAST_ERROR_CODE]"
         fi
         PS1="$PS1_PREFIX$PS1_ERROR$PS1_SUFFIX"
 }
 
 export HISTCONTROL=ignoreboth:erasedups
-export GITHUBPROJECTS="$HOME/projects"
 CDPATH="$HOME"
 CDPATH="$GITHUBPROJECTS:$CDPATH"
-alias cdd='pushd $DOTFILEDIR'
+alias cdd='pushd $SCRIPTS_REPOSITORY'
 alias cde='pushd $HOME/.emacs.d'
 alias d='git diff'
 alias dc='git diff --cached'
@@ -77,13 +101,13 @@ mkcdir () {
 
 man() {
         env \
-                LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
-                LESS_TERMCAP_md="$(printf "\e[1;31m")" \
-                LESS_TERMCAP_me="$(printf "\e[0m")" \
-                LESS_TERMCAP_se="$(printf "\e[0m")" \
-                LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
-                LESS_TERMCAP_ue="$(printf "\e[0m")" \
-                LESS_TERMCAP_us="$(printf "\e[1;32m")" \
+                LESS_TERMCAP_mb="$(printf "\\e[1;31m")" \
+                LESS_TERMCAP_md="$(printf "\\e[1;31m")" \
+                LESS_TERMCAP_me="$(printf "\\e[0m")" \
+                LESS_TERMCAP_se="$(printf "\\e[0m")" \
+                LESS_TERMCAP_so="$(printf "\\e[1;44;33m")" \
+                LESS_TERMCAP_ue="$(printf "\\e[0m")" \
+                LESS_TERMCAP_us="$(printf "\\e[1;32m")" \
                 man "${@}"
 }
 
@@ -94,19 +118,26 @@ github() {
         fi
 }
 
+mkdir -p "$GIT_CONFIG"
+mkdir -p "$OPENBOX_CONFIG"
+
+find "$OPENBOX_CONFIG" -maxdepth 1 -type f -name "*.xml" |\
+while read -r file
+do
+        cp --force "$DOTFILES_DIRECTORY/openbox.xml" "$file"
+done
+
+cp --force "$DOTFILES_DIRECTORY/.emacs.git" "$HOME/.emacs.git"
+cp --force "$DOTFILES_DIRECTORY/.gitconfig" "$HOME/.gitconfig"
+cp --force "$DOTFILES_DIRECTORY/.inputrc" "$HOME/.inputrc"
+cp --force "$DOTFILES_DIRECTORY/.minttyrc" "$HOME/.minttyrc"
+cp --force "$DOTFILES_DIRECTORY/.sbclrc" "$HOME/.sbclrc"
+cp --force "$DOTFILES_DIRECTORY/openbox.xml" "$OPENBOX_CONFIG/openbox.xml"
+
 if command -v openbox >/dev/null
 then
-        OPENBOX_CONFIG="$HOME/.config/openbox"
-        mkdir -p "$OPENBOX_CONFIG"
-        find "$OPENBOX_CONFIG" -maxdepth 1 -type f -name "*.xml" |\
-                while read -r file
-                do
-                        cp -f "$DOTFILEDIR/openbox.xml" "$file"
-                done
         openbox --reconfigure
 fi
-
-find "$DOTFILEDIR/dotfiles" -type f -exec cp '{}' "$HOME" \;
 
 case $(uname -s) in
         CYGWIN*)
