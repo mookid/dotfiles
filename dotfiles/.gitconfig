@@ -8,7 +8,6 @@
     email = nathan.moreau@m4x.org
 [alias]
     ame = commit -av --amend
-    ap = add -p
     ch = cherry-pick
     cam = commit -av
     cm = commit -v
