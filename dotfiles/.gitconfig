@@ -48,6 +48,8 @@
 [color "grep"]
     linenumber = bold green
     filename = magenta
+[log]
+     decorate = auto
 [fetch]
     all = true
     prune = true
