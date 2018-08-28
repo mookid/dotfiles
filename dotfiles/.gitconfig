@@ -50,6 +50,10 @@
     filename = magenta
 [log]
      decorate = auto
+[color "diff"]
+    meta = magenta
+[color "status"]
+    untracked = cyan
 [fetch]
     all = true
     prune = true
