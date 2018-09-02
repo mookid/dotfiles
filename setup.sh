@@ -138,9 +138,3 @@ if command -v openbox >/dev/null
 then
         openbox --reconfigure
 fi
-
-case $(uname -s) in
-        CYGWIN*)
-                source windows_ssh_setup.sh
-        ;;
-esac
