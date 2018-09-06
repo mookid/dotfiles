@@ -2,7 +2,7 @@ set convert-meta on
 
 "\M-p": previous-history
 "\M-n": next-history
-"\C-\M-l": "\C-e |less -R "
+"\C-\M-l": "\C-e |less -RFMi"
 "\C-\M-r": "\C-e >out 2>log "
 set completion-ignore-case on
 set colored-completion-prefix on
