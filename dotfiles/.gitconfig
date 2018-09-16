@@ -16,6 +16,7 @@
     dc = diff --cached --patch-with-stat
     du = diff --patch-with-stat @{u} HEAD
     f = fetch --all --prune
+    gg = grep -n
     l = log --decorate --oneline --graph --color -5
     la = log --all --decorate --oneline --graph --color -5
     laa = log --all --decorate --oneline --graph --color
