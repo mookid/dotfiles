@@ -75,6 +75,8 @@ __update_error_code() {
 export HISTCONTROL=ignoreboth:erasedups
 CDPATH="$HOME"
 CDPATH="$GITHUBPROJECTS:$CDPATH"
+alias ..='cd ..'
+alias ...='cd ../..'
 alias cdd='pushd $SCRIPTS_REPOSITORY'
 alias cde='pushd $HOME/.emacs.d'
 alias d='git d'
