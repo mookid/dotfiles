@@ -1,5 +1,10 @@
 ;;; my-init.el ---  -*- mode: emacs-lisp -*-
 
+(set-face-background 'default "#FFEAFF")
+(set-face-font 'default "Consolas 18")
+(set-frame-height nil 24)
+(set-frame-width nil 80)
+
 (defun do-commit ()
   (interactive)
   (save-buffer)
