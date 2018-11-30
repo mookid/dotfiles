@@ -15,8 +15,7 @@ BASHRC="$HOME/.bashrc"
 OPENBOX_CONFIG="$HOME/.config/openbox"
 GIT_CONFIG="$HOME/.config/git"
 DOTFILES_DIRECTORY="$SCRIPTS_REPOSITORY/dotfiles"
-GITHUBPROJECTS="$HOME/projects"
-export GITHUBPROJECTS
+export GITHUBPROJECTS="$HOME/src"
 
 case $1 in
         --help)
