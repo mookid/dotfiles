@@ -29,12 +29,13 @@ case $1 in
 ## {{{ This part of .bashrc has been generated.
 if  test -z \$SCRIPTS_REPOSITORY_IN_PATH
 then
-        export SCRIPTS_REPOSITORY=$(readlink -f $(dirname "$0"))
+        export SCRIPTS_REPOSITORY=\
+\${HOME}/$(realpath --relative-to=${HOME} $(readlink -f $(dirname $0)))
         export PATH=\$SCRIPTS_REPOSITORY:\$PATH
         export SCRIPTS_REPOSITORY_IN_PATH=1
 fi
 
-. $(readlink -f "$0") --setup
+. \${SCRIPTS_REPOSITORY}/setup.sh --setup
 ## }}}
 EOF
                 exit 0
