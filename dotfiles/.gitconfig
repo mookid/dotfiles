@@ -38,7 +38,7 @@
 [color "branch"]
     upstream = bold cyan
 [diff]
-    mnemonicprefix = true
+    noprefix = true
     algorithm = patience
 [pull]
     rebase = true
