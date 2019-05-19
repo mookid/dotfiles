@@ -51,7 +51,7 @@
 [log]
      decorate = auto
 [color "diff"]
-    meta = magenta
+    meta = white blue
 [color "status"]
     untracked = cyan
 [fetch]
