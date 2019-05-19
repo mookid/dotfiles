@@ -4,49 +4,18 @@ usage() {
 cat <<EOF
 usage:
       --setup                   run the setup script
-      --install                 add setup code to .bashrc
-      --uninstall               remove setup code from .bashrc
       --help                    print this help message
 EOF
 }
 
 # locations
-BASHRC="$HOME/.bashrc"
 OPENBOX_CONFIG="$HOME/.config/openbox"
-GIT_CONFIG="$HOME/.config/git"
 DOTFILES_DIRECTORY="$SCRIPTS_REPOSITORY/dotfiles"
 export GITHUBPROJECTS="$HOME/src"
 
 case $1 in
         --help)
                 usage
-                exit 0
-                ;;
-
-        --install)
-
-                cat >>"$BASHRC" <<EOF
-## {{{ This part of .bashrc has been generated.
-if  test -z \$SCRIPTS_REPOSITORY_IN_PATH
-then
-        export SCRIPTS_REPOSITORY=\
-\${HOME}/$(realpath --relative-to=${HOME} $(readlink -f $(dirname $0)))
-        export PATH=\$SCRIPTS_REPOSITORY:\$PATH
-        export SCRIPTS_REPOSITORY_IN_PATH=1
-fi
-
-. \${SCRIPTS_REPOSITORY}/setup.sh --setup
-## }}}
-EOF
-                exit 0
-                ;;
-
-        --uninstall)
-                BASHRC_TMP=$(mktemp)
-                awk '/## {{{/ {FILTER=1}
-                    {if(!FILTER) print}
-                    /## }}}/ {FILTER=0} ' "$BASHRC" >"$BASHRC_TMP"
-                mv "$BASHRC_TMP" "$BASHRC"
                 exit 0
                 ;;
 
@@ -120,7 +89,6 @@ github() {
         fi
 }
 
-mkdir -p "$GIT_CONFIG"
 mkdir -p "$OPENBOX_CONFIG"
 
 find "$OPENBOX_CONFIG" -maxdepth 1 -type f -name "*.xml" |\
