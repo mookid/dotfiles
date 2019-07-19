@@ -8,13 +8,16 @@
     email = nathan.moreau@m4x.org
 [alias]
     ame = commit -av --amend
+    bgrep = bgrep
     ch = cherry-pick
     cam = commit -av
     cm = commit -v
     co = checkout
     d = diff --patch-with-stat
+    dm = !git-dm
     dc = diff --cached --patch-with-stat
     f = fetch --all --prune
+    ff = !git-ff
     gg = grep -n
     l = log --decorate --oneline --graph --color -5
     la = log --all --decorate --oneline --graph --color -5
@@ -24,6 +27,7 @@
     r1 = reset HEAD^
     redate = commit --amend --date=now --no-edit
     rh= reset --hard
+    rm-gone = !git-rm-gone
     s = status
     vv = branch -vv
     wc = whatchanged --oneline -5
