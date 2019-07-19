@@ -62,6 +62,6 @@
     all = true
     prune = true
 [pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+    log  = diffr | less
+    show = diffr | less
+    diff = diffr | less
