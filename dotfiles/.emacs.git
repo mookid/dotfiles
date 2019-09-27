@@ -5,6 +5,10 @@
 (set-frame-height nil 24)
 (set-frame-width nil 80)
 
+(require 'subword)
+(subword-mode +1)
+(modify-syntax-entry ?/ ".")
+
 (defun do-commit ()
   (interactive)
   (save-buffer)
