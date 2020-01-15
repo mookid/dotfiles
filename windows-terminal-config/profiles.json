@@ -1,0 +1,48 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "defaultProfile": "{00000000-0000-0000-0000-000000000001}",
+
+    "profiles":
+    [
+        {
+            // Make changes here to the powershell.exe profile
+            "guid": "{00000000-0000-0000-0000-000000000000}",
+            "name": "Windows PowerShell",
+            "commandline": "powershell.exe",
+            "hidden": false,
+            "fontFace": "SF Mono",
+            "cursorColor": "#00FF00",
+            "cursorShape": "filledBox",
+            "startingDirectory": "%userprofile%/src"
+        },
+        {
+            // Make changes here to the cmd.exe profile
+            "guid": "{00000000-0000-0000-0000-000000000001}",
+            "name": "cmd",
+            "commandline": "cmd.exe",
+            "hidden": false,
+            "fontFace": "SF Mono",
+            "cursorColor": "#00FF00",
+            "cursorShape": "filledBox",
+            "startingDirectory": "%userprofile%/src"
+        },
+        {
+            "guid": "{00000000-0000-0000-0000-000000000002}",
+            "hidden": false,
+            "name": "Azure Cloud Shell",
+            "source": "Windows.Terminal.Azure"
+        }
+    ],
+
+    // Add custom color schemes to this array
+    "schemes": [],
+
+    // Add any keybinding overrides to this array.
+    // To unbind a default keybinding, set the command to "unbound"
+    "keybindings": []
+}
