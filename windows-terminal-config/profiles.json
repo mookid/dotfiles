@@ -43,6 +43,16 @@
         },
         {
             "guid": "{00000000-0000-0000-0000-000000000003}",
+            "name": "Ubuntu",
+            "hidden": false,
+            "fontFace": "SF Mono",
+            "cursorColor": "#00FF00",
+            "cursorShape": "filledBox",
+            "source": "Windows.Terminal.Wsl",
+            "startingDirectory": "%userprofile%/src"
+        },
+        {
+            "guid": "{00000000-0000-0000-0000-000000000004}",
             "hidden": false,
             "name": "Azure Cloud Shell",
             "source": "Windows.Terminal.Azure"
