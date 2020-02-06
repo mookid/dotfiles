@@ -33,6 +33,16 @@
         },
         {
             "guid": "{00000000-0000-0000-0000-000000000002}",
+            "name": "python",
+            "commandline": "python.exe",
+            "hidden": false,
+            "fontFace": "SF Mono",
+            "cursorColor": "#00FF00",
+            "cursorShape": "filledBox",
+            "startingDirectory": "%userprofile%/src"
+        },
+        {
+            "guid": "{00000000-0000-0000-0000-000000000003}",
             "hidden": false,
             "name": "Azure Cloud Shell",
             "source": "Windows.Terminal.Azure"
