@@ -1,5 +1,5 @@
 [core]
-    editor = emacs -Q -l "$HOME/.emacs.git"
+    editor = emacs -Q -l "$HOME/.emacs.d/.emacs.git"
     logallrefupdates = true
 [gc]
     auto = 256
