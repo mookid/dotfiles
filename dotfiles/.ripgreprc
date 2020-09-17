@@ -1,4 +1,5 @@
 -M120
+--max-columns-preview
 --hidden
 --path-separator=/
 -S
