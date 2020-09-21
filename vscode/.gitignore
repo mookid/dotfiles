@@ -1,0 +1,24 @@
+Backups/**
+Cache/**
+CachedData/**
+CachedExtensions/**
+Code Cache/**
+Cookies
+Cookies-journal
+GPUCache/**
+logs/**
+Network Persistent State
+Session Storage/**
+TransportSecurity
+User/**globalStorage/**
+User/**workspaceStorage/**
+languagepacks.json
+machineid
+rapid_render.json
+storage.json
+CachedExtensionVSIXs/**
+Crashpad/**
+Dictionaries/**
+Local Storage/**
+Preferences
+en-GB-9-0.bdic

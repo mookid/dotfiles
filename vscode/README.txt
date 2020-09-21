@@ -1,0 +1,1 @@
+usage: code --user-data-dir path/dotfiles/vscode
