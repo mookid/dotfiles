@@ -18,6 +18,7 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "go.formatTool": "goimports",
+    "omnisharp.autoStart": false,
     "scm.diffDecorations": "none",
     "search.seedWithNearestWord": true,
     "telemetry.enableCrashReporter": false,
