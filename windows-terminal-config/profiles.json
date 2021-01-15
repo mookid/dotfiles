@@ -7,62 +7,43 @@
 
     "defaultProfile": "{00000000-0000-0000-0000-000000000001}",
 
-    "profiles":
-    [
-        {
-            // Make changes here to the powershell.exe profile
-            "guid": "{00000000-0000-0000-0000-000000000000}",
-            "name": "Windows PowerShell",
-            "commandline": "powershell.exe",
-            "hidden": false,
-            "fontFace": "SF Mono",
-            "cursorColor": "#00FF00",
-            "cursorShape": "filledBox",
-            "startingDirectory": "%userprofile%/src"
-        },
-        {
-            // Make changes here to the cmd.exe profile
-            "guid": "{00000000-0000-0000-0000-000000000001}",
-            "name": "cmd",
-            "commandline": "cmd.exe",
-            "hidden": false,
-            "fontFace": "SF Mono",
-            "cursorColor": "#00FF00",
-            "cursorShape": "filledBox",
-            "startingDirectory": "%userprofile%/src"
-        },
-        {
-            "guid": "{00000000-0000-0000-0000-000000000002}",
-            "name": "python",
-            "commandline": "python.exe",
-            "hidden": false,
-            "fontFace": "SF Mono",
-            "cursorColor": "#00FF00",
-            "cursorShape": "filledBox",
-            "startingDirectory": "%userprofile%/src"
-        },
-        {
-            "guid": "{00000000-0000-0000-0000-000000000003}",
-            "name": "Ubuntu",
-            "hidden": false,
-            "fontFace": "SF Mono",
-            "cursorColor": "#00FF00",
-            "cursorShape": "filledBox",
-            "source": "Windows.Terminal.Wsl",
-            "startingDirectory": "%userprofile%/src"
-        },
-        {
-            "guid": "{00000000-0000-0000-0000-000000000004}",
-            "hidden": false,
-            "name": "Azure Cloud Shell",
-            "source": "Windows.Terminal.Azure"
-        }
-    ],
+    "copyOnSelect": true,
 
-    // Add custom color schemes to this array
-    "schemes": [],
+    "profiles": {
+        "list": [
+            {
+                // Make changes here to the powershell.exe profile
+                "guid": "{00000000-0000-0000-0000-000000000000}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe"
+            },
+            {
+                // Make changes here to the cmd.exe profile
+                "guid": "{00000000-0000-0000-0000-000000000001}",
+                "name": "cmd",
+                "commandline": "cmd.exe"
+            }
+        ],
+        "defaults": {
+            "startingDirectory": "%userprofile%/src",
+            "hidden": false,
+            "fontFace": "Consolas",
+            "cursorColor": "#FF00FF",
+            "cursorShape": "filledBox",
+            "backgroundImage": "%LOCALAPPDATA%/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/bg01.jpg"
+        }
+    },
 
     // Add any keybinding overrides to this array.
     // To unbind a default keybinding, set the command to "unbound"
-    "keybindings": []
+    "keybindings": [
+        {
+            "keys": "ctrl+shift+f",
+            "command": "find"
+        },
+        {
+            "keys": "ctrl+shift+t",
+            "command": "newTab"
+        }
+    ]
 }
