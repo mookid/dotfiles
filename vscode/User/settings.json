@@ -12,7 +12,7 @@
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/.factorypath": true
+    "**/.factorypath": true,
   },
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
@@ -26,10 +26,12 @@
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#ffffe8",
+    "editor.lineHighlightBackground": "#FFFFE8",
     "terminal.background": "#1A1110",
     "terminal.foreground": "#EEEEEE",
     "terminal.selectionBackground": "#0000EF",
+    "terminal.ansiWhite": "#EEEEEE",
+    "terminal.ansiBrightWhite": "#EEEEEE",
   },
-  "workbench.sideBar.location": "right"
+  "workbench.sideBar.location": "right",
 }
