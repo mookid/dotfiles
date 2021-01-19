@@ -1,35 +1,35 @@
 {
-    "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": false,
 
-    "editor.cursorBlinking": "solid",
-    "editor.fontSize": 12,
-    "editor.minimap.enabled": false,
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 8,
-
-    "files.autoSave": "onFocusChange",
-    "files.exclude": {
-        "**/*.exe": true,
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    },
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "go.formatTool": "goimports",
-    "omnisharp.autoStart": false,
-    "scm.diffDecorations": "none",
-    "search.seedWithNearestWord": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "terminal.integrated.shell.windows": "cmd.exe",
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Visual Studio Light",
-    "workbench.colorCustomizations": {
-        "editor.lineHighlightBackground": "#ffffe8",
-        "terminal.background": "#1A1110",
-        "terminal.foreground": "#EEEEEE",
-        "terminal.selectionBackground": "#0000EF",
-    }
+  "editor.cursorBlinking": "solid",
+  "editor.fontSize": 12,
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 8,
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/*.exe": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "go.formatTool": "goimports",
+  "omnisharp.autoStart": false,
+  "scm.diffDecorations": "none",
+  "search.seedWithNearestWord": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "terminal.integrated.shell.windows": "cmd.exe",
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#ffffe8",
+    "terminal.background": "#1A1110",
+    "terminal.foreground": "#EEEEEE",
+    "terminal.selectionBackground": "#0000EF",
+  },
+  "workbench.sideBar.location": "right"
 }
