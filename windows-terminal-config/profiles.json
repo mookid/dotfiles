@@ -3,47 +3,45 @@
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 
 {
-    "$schema": "https://aka.ms/terminal-profiles-schema",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
 
-    "defaultProfile": "{00000000-0000-0000-0000-000000000001}",
+  "defaultProfile": "{00000000-0000-0000-0000-000000000001}",
 
-    "copyOnSelect": true,
+  "copyOnSelect": true,
 
-    "profiles": {
-        "list": [
-            {
-                // Make changes here to the powershell.exe profile
-                "guid": "{00000000-0000-0000-0000-000000000000}",
-                "name": "Windows PowerShell",
-                "commandline": "powershell.exe"
-            },
-            {
-                // Make changes here to the cmd.exe profile
-                "guid": "{00000000-0000-0000-0000-000000000001}",
-                "name": "cmd",
-                "commandline": "cmd.exe"
-            }
-        ],
-        "defaults": {
-            "startingDirectory": "%userprofile%/src",
-            "hidden": false,
-            "fontFace": "Consolas",
-            "cursorColor": "#FF00FF",
-            "cursorShape": "filledBox",
-            "backgroundImage": "%LOCALAPPDATA%/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/bg01.jpg"
-        }
+  "profiles": {
+    "list": [
+      {
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "name": "Windows PowerShell",
+        "commandline": "powershell.exe"
+      },
+      {
+        "guid": "{00000000-0000-0000-0000-000000000001}",
+        "name": "cmd",
+        "commandline": "cmd.exe"
+      }
+    ],
+    "defaults": {
+      "startingDirectory": "%userprofile%/src",
+      "hidden": false,
+      "fontFace": "Consolas",
+      "cursorColor": "#FF00FF",
+      "cursorShape": "filledBox",
+      "backgroundImage": "%LOCALAPPDATA%/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/bg01.jpg"
+    }
+  },
+
+  // Add any keybinding overrides to this array.
+  // To unbind a default keybinding, set the command to "unbound"
+  "keybindings": [
+    {
+      "keys": "ctrl+shift+f",
+      "command": "find"
     },
-
-    // Add any keybinding overrides to this array.
-    // To unbind a default keybinding, set the command to "unbound"
-    "keybindings": [
-        {
-            "keys": "ctrl+shift+f",
-            "command": "find"
-        },
-        {
-            "keys": "ctrl+shift+t",
-            "command": "newTab"
-        }
-    ]
+    {
+      "keys": "ctrl+shift+t",
+      "command": "newTab"
+    }
+  ]
 }
