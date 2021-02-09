@@ -1,11 +1,12 @@
 {
   "diffEditor.renderSideBySide": false,
-
   "editor.cursorBlinking": "solid",
   "editor.fontSize": 12,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
-  "editor.tabSize": 8,
+  "editor.tabSize": 4,
+  "editor.wordWrap": "on",
+  "explorer.confirmDelete": false,
   "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/*.exe": true,
@@ -13,7 +14,10 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.factorypath": true,
+    "**/*.obj": true,
+    "**/*.o": true
   },
+  "files.simpleDialog.enable": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "go.formatTool": "goimports",
@@ -24,14 +28,16 @@
   "telemetry.enableTelemetry": false,
   "terminal.integrated.shell.windows": "cmd.exe",
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#FFFFE8",
+    "diffEditor.insertedTextBackground": "#004400",
+    "diffEditor.removedTextBackground": "#440000",
+    "editor.lineHighlightBackground": "#000040",
     "terminal.background": "#1A1110",
     "terminal.foreground": "#EEEEEE",
     "terminal.selectionBackground": "#0000EF",
     "terminal.ansiWhite": "#EEEEEE",
-    "terminal.ansiBrightWhite": "#EEEEEE",
+    "terminal.ansiBrightWhite": "#EEEEEE"
   },
-  "workbench.sideBar.location": "right",
+  "workbench.sideBar.location": "right"
 }
