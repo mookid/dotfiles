@@ -9,6 +9,8 @@
 
   "copyOnSelect": true,
 
+  "wordDelimiters": " <>;",
+
   "profiles": {
     "list": [
       {
@@ -20,6 +22,11 @@
         "guid": "{00000000-0000-0000-0000-000000000001}",
         "name": "cmd",
         "commandline": "cmd.exe"
+      },
+      {
+        "guid": "{00000000-0000-0000-0000-000000000002}",
+        "name": "VS",
+        "commandline": "cmd.exe /k \"C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/Tools/VsDevCmd.bat\" -arch=amd64"
       }
     ],
     "defaults": {
