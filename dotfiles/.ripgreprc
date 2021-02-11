@@ -1,5 +1,6 @@
--M120
---max-columns-preview
+# setup on windows:
+# setx RIPGREP_CONFIG_PATH <path-to-this-file>
+
 --hidden
 --path-separator=/
 -S
