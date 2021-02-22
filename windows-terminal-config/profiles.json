@@ -9,7 +9,7 @@
 
   "copyOnSelect": true,
 
-  "wordDelimiters": " <>;",
+  "wordDelimiters": " <>;()[]'\"",
 
   "profiles": {
     "list": [
