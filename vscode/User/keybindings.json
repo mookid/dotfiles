@@ -67,5 +67,19 @@
   {
     "key": "alt+l",
     "command": "editor.action.transformToLowercase"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.tasks.reRunTask"
+  },
+  {
+    "key": "tab",
+    "command": "editor.action.reindentselectedlines",
+    "when": "!suggestWidgetVisible && editorFocus && !editorHasSelection"
+  },
+  {
+    "key": "tab",
+    "command": "tab",
+    "when": "!suggestWidgetVisible && editorFocus && editorHasSelection"
   }
 ]
