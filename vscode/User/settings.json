@@ -4,8 +4,10 @@
   "editor.fontSize": 12,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
   "editor.wordWrap": "on",
+  "editor.fontFamily": "Source Code Pro, Consolas",
+  "explorer.autoReveal": true,
   "explorer.confirmDelete": false,
   "files.autoSave": "onFocusChange",
   "files.exclude": {
@@ -22,22 +24,30 @@
   "files.trimTrailingWhitespace": true,
   "go.formatTool": "goimports",
   "omnisharp.autoStart": false,
+  "python.formatting.provider": "black",
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
   "scm.diffDecorations": "none",
   "search.seedWithNearestWord": true,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "terminal.integrated.shell.windows": "cmd.exe",
-  "window.zoomLevel": 1,
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.colorCustomizations": {
     "diffEditor.insertedTextBackground": "#004400",
     "diffEditor.removedTextBackground": "#440000",
+    "editorCursor.foreground": "#EE0000",
     "editor.lineHighlightBackground": "#000040",
     "terminal.background": "#1A1110",
     "terminal.foreground": "#EEEEEE",
-    "terminal.selectionBackground": "#0000EF",
+    "terminal.selectionBackground": "#880044",
     "terminal.ansiWhite": "#EEEEEE",
     "terminal.ansiBrightWhite": "#EEEEEE"
   },
-  "workbench.sideBar.location": "right"
+  "workbench.sideBar.location": "right",
+  "window.zoomLevel": 1
 }
