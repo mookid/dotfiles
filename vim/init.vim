@@ -21,3 +21,12 @@ set ruler
 :set guioptions-=L  "remove left-hand scroll bar
 
 :colorscheme desert
+
+" j and k are display-line based
+nmap k gk
+nmap <Up> gk
+nmap j gj
+nmap <Down> gj
+
+" use system keyboard
+set clipboard=unnamed
